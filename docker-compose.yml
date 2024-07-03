@@ -1,0 +1,6 @@
+﻿services:
+  metrics:
+    image: metrics
+    build:
+      context: .
+      dockerfile: Metrics/Dockerfile

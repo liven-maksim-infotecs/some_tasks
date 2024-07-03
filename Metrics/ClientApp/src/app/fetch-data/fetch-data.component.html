@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!statistics"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="statistics">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>AppVersion</th>
+      <th>UserName</th>
+      <th>OS Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let statistic of statistics">
+      <td>{{ statistic.id }}</td>
+      <td>{{ statistic.appVersion }}</td>
+      <td>{{ statistic.userName }}</td>
+      <td>{{ statistic.osType }}</td>
+    </tr>
+  </tbody>
+</table>
