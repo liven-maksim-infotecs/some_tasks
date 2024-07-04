@@ -1,5 +1,10 @@
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", false, true)
+    .AddJsonFile($"appsettings.{builder.Environment}.json", true, true)
+    .AddEnvironmentVariables("Mobile_");
+
 builder.Services.AddData();
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(
