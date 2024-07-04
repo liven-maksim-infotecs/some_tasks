@@ -5,7 +5,7 @@ builder.Configuration
     .AddJsonFile($"appsettings.{builder.Environment}.json", true, true)
     .AddEnvironmentVariables("Mobile_");
 
-builder.Services.AddData();
+builder.Services.RegisterDataLayer(builder.Configuration);
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(
         options =>

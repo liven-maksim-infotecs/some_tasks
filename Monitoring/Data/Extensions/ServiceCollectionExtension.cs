@@ -6,10 +6,37 @@
 public static class ServiceCollectionExtension
 {
     /// <summary>
-    /// Добавить слой Data в приложение.
+    /// Зарегистрировать уровень данных.
     /// </summary>
     /// <param name="collection"><see cref="IServiceCollection"/>.</param>
-    /// <returns>Модифицированный <see cref="IServiceCollection"/>.</returns>
-    public static IServiceCollection AddData(this IServiceCollection collection) =>
-        collection.AddSingleton<MobileStatisticMemoryRepository>();
+    /// <param name="configuration"><see cref="IConfiguration"/>.</param>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
+    public static IServiceCollection RegisterDataLayer(this IServiceCollection collection, IConfiguration configuration)
+    {
+        RegisterClassMapIfNot<MobileAppStatistic>();
+
+        return collection
+            .AddMongoDbClient(configuration)
+            .AddScoped<MongoDbContext>()
+            .AddScoped(typeof(IRepository<>), typeof(Repository<>));
+    }
+
+    private static IServiceCollection AddMongoDbClient(this IServiceCollection collection, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString(ConnectionStringNames.Mongo)!;
+
+        MongoUrl url = MongoUrl.Create(connectionString);
+        MongoClient mongoClient = new(url);
+
+        return collection.AddSingleton<IMongoClient>(mongoClient);
+    }
+
+
+    private static void RegisterClassMapIfNot<T>()
+    {
+        if (!BsonClassMap.IsClassMapRegistered(typeof(T)))
+        {
+            BsonClassMap.RegisterClassMap<T>();
+        }
+    }
 }
