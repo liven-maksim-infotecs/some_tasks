@@ -9,7 +9,7 @@ export class FetchDataComponent {
   public statistics: DeviceStatistic[] = [];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<DeviceStatistic[]>(baseUrl + 'Statistic').subscribe(this.updateStatistic);
+    http.get<DeviceStatistic[]>(baseUrl + 'api/Statistic').subscribe(this.updateStatistic);
   }
 
   updateStatistic(result: DeviceStatistic[]){

@@ -1,7 +1,7 @@
 ﻿namespace Metrics.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class StatisticController : ControllerBase
 {
     private readonly ILogger<StatisticController> _logger;
