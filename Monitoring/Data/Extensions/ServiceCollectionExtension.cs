@@ -1,4 +1,4 @@
-﻿namespace Metrics.Data.Extensions;
+﻿namespace Monitoring.Data.Extensions;
 
 public static class ServiceCollectionExtension
 {

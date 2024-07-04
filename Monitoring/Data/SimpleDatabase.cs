@@ -1,4 +1,4 @@
-﻿namespace Metrics.Data;
+﻿namespace Monitoring.Data;
 
 public class SimpleDatabase
 {

@@ -1,4 +1,4 @@
-﻿namespace Metrics.Data.Models.Enums;
+﻿namespace Monitoring.Data.Models.Enums;
 
 public enum DeviceOSType
 {

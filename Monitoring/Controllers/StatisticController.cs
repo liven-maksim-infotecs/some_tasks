@@ -1,4 +1,4 @@
-﻿namespace Metrics.Controllers;
+﻿namespace Monitoring.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
