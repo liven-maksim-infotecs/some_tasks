@@ -10,20 +10,21 @@ ARG BUILD_CONFIGURATION=Release
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && apt-get install -y \
         nodejs \
+        curl \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["Metrics/Metrics.csproj", "Metrics/"]
-RUN dotnet restore "Metrics/Metrics.csproj"
+COPY ["Monitoring/Monitoring.csproj", "Monitoring/"]
+RUN dotnet restore "Monitoring/Monitoring.csproj"
 COPY . .
-WORKDIR "/src/Metrics"
-RUN dotnet build "Metrics.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/Monitoring"
+RUN dotnet build "Monitoring.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Metrics.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Monitoring.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Metrics.dll"]
+ENTRYPOINT ["dotnet", "Monitoring.dll"]
