@@ -15,6 +15,9 @@
 # Generated files
 .idea/**/contentModel.xml
 
+**/appsettings.*.json
+^**/appsettings.Production.json
+
 # Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
