@@ -2,19 +2,17 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html'
+  selector: 'app-monitoring',
+  templateUrl: './monitoring.component.html'
 })
-export class FetchDataComponent {
+export class MonitoringComponent {
   public statistics: Array<DeviceStatistic> = [];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<DeviceStatistic[]>(baseUrl + 'api/Statistic').subscribe(this.updateStatistic);
-  }
-
-  updateStatistic(result: DeviceStatistic[]){
-    console.log(result)
-    this.statistics = result;
+    this.statistics = [];
+    http.get<DeviceStatistic[]>(baseUrl + 'api/Statistic').subscribe((result) => {
+      this.statistics = result;
+    });
   }
 }
 
