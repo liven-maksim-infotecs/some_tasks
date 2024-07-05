@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Data.Models;
+﻿namespace Monitoring.Domain.Models;
 
 public record DeviceStatistic(
     Guid Id,

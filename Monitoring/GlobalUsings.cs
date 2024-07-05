@@ -7,6 +7,6 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.Logging;
 global using Monitoring.Data;
 global using Monitoring.Data.Extensions;
-global using Monitoring.Data.Models;
-global using Monitoring.Data.Models.Enums;
+global using Monitoring.Domain.Models;
+global using Monitoring.Domain.Models.Enums;
 global using Swashbuckle.AspNetCore.Annotations;
