@@ -11,5 +11,5 @@ public static class ServiceCollectionExtension
     /// <param name="collection"><see cref="IServiceCollection"/>.</param>
     /// <returns>Модифицированный <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddData(this IServiceCollection collection) =>
-        collection.AddSingleton<MobileStatisticInMemoryRepository>();
+        collection.AddSingleton<MobileStatisticMemoryRepository>();
 }

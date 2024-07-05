@@ -3,7 +3,7 @@
 /// <summary>
 /// Простая реализация базы.
 /// </summary>
-public class MobileStatisticInMemoryRepository
+public class MobileStatisticMemoryRepository
 {
     private readonly ConcurrentBag<DeviceStatistic> _dataBase = new()
     {
