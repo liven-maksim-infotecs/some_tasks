@@ -22,7 +22,7 @@
   </ItemGroup>
   
   <PropertyGroup>
-    <CodeAnalysisRuleSet>infotecs.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>../infotecs.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
