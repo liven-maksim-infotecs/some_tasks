@@ -1,30 +1,37 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿# Base layer
+FROM mcr.microsoft.com/dotnet/aspnet:6.0.31-bookworm-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+RUN apt update \
+    && apt install -y \
+            curl \
+    && rm -rf /var/lib/apt/lists/*
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-ARG BUILD_CONFIGURATION=Release
+
+# Building layer
+FROM mcr.microsoft.com/dotnet/sdk:6.0.423-1-bookworm-slim AS build
 
 # Install Node.js
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install -y \
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt install -y \
         nodejs \
-        curl \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
 COPY ["Monitoring/Monitoring.csproj", "Monitoring/"]
-RUN dotnet restore "Monitoring/Monitoring.csproj"
+RUN dotnet restore "Monitoring/Monitoring.csproj" --nologo
 COPY . .
 WORKDIR "/src/Monitoring"
-RUN dotnet build "Monitoring.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "Monitoring.csproj" --no-restore --nologo -c Release
 
+
+# Publish layer
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Monitoring.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Monitoring.csproj" --no-build --nologo -c Release -o /app/publish /p:UseAppHost=false
 
-FROM base AS final
+# Runtime layer
+FROM base AS runtime
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Monitoring.dll"]
