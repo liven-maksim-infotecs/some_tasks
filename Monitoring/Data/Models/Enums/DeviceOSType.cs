@@ -2,6 +2,7 @@
 
 public enum DeviceOSType
 {
+    Unknown,
     Windows,
     Linux,
     Android,

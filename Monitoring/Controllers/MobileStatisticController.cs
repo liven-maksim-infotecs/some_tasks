@@ -25,6 +25,7 @@ public class MobileStatisticController : ControllerBase
     /// Получить актуальную статистику по мобильному приложению.
     /// </summary>
     /// <returns>Коллекция элементов <see cref="DeviceStatistic"/>.</returns>
+    [SwaggerResponse(StatusCodes.Status200OK, "Статистика подготовлена успешно", typeof(IEnumerable<DeviceStatistic>))]
     [HttpGet]
     public IEnumerable<DeviceStatistic> GetAll()
     {
@@ -37,11 +38,20 @@ public class MobileStatisticController : ControllerBase
     /// Отправить статистику на хранение.
     /// </summary>
     /// <param name="statistic"><see cref="DeviceStatistic"/>.</param>
+    /// <returns><see cref="IActionResult"/>.</returns>
+    [SwaggerResponse(StatusCodes.Status200OK, "Статистика записана успешно")]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Входные данные невалидны")]
     [HttpPost]
-    public void SendMetrics(DeviceStatistic statistic)
+    public IActionResult SendMetrics(DeviceStatistic statistic)
     {
+        if (statistic.OsType == DeviceOSType.Unknown)
+        {
+            return BadRequest($"Device OS type must be specified");
+        }
+
         _database.Add(statistic);
 
         _logger.LogInformation("Metrics have been sent: {Id}", statistic.Id);
+        return Ok();
     }
 }
