@@ -8,14 +8,14 @@
 public class MobileStatisticController : ControllerBase
 {
     private readonly ILogger<MobileStatisticController> _logger;
-    private readonly SimpleDatabase _database;
+    private readonly MobileStatisticInMemoryRepository _database;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MobileStatisticController"/> class.
     /// </summary>
     /// <param name="logger"><see cref="ILogger"/>.</param>
-    /// <param name="database"><see cref="SimpleDatabase"/>.</param>
-    public MobileStatisticController(ILogger<MobileStatisticController> logger, SimpleDatabase database)
+    /// <param name="database"><see cref="MobileStatisticInMemoryRepository"/>.</param>
+    public MobileStatisticController(ILogger<MobileStatisticController> logger, MobileStatisticInMemoryRepository database)
     {
         _logger = logger;
         _database = database;
