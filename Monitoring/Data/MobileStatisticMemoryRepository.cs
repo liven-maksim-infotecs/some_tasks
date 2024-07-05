@@ -1,11 +1,11 @@
 ﻿namespace Monitoring.Data;
 
 /// <summary>
-/// Простая реализация базы.
+/// Реализация memory репозитория для статистики мобильных приложений.
 /// </summary>
 public class MobileStatisticMemoryRepository
 {
-    private readonly ConcurrentBag<DeviceStatistic> _dataBase = new()
+    private readonly ConcurrentBag<MobileAppStatistic> _dataBase = new()
     {
         new(Guid.NewGuid(), "Random Guy", DeviceOSType.Android, "8.800.55.5"),
         new(Guid.NewGuid(), "The One", DeviceOSType.Windows, "8.800.55.5"),
@@ -14,16 +14,16 @@ public class MobileStatisticMemoryRepository
     };
 
     /// <summary>
-    /// Получить данные о статистике.
+    /// Получить данные о статистике мобильных приложений.
     /// </summary>
-    /// <returns>Коллекция элементов <see cref="DeviceStatistic"/>.</returns>
-    public IEnumerable<DeviceStatistic> Get() =>
+    /// <returns>Коллекция элементов <see cref="MobileAppStatistic"/>.</returns>
+    public IEnumerable<MobileAppStatistic> Get() =>
         _dataBase.ToArray();
 
     /// <summary>
-    /// Записать статистику в базу.
+    /// Записать данные о статистике мобильных приложений в базу.
     /// </summary>
-    /// <param name="statistic"><see cref="DeviceStatistic"/>.</param>
-    public void Add(DeviceStatistic statistic) =>
+    /// <param name="statistic"><see cref="MobileAppStatistic"/>.</param>
+    public void Add(MobileAppStatistic statistic) =>
         _dataBase.Add(statistic);
 }
