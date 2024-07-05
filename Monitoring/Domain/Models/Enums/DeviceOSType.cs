@@ -1,5 +1,8 @@
 ﻿namespace Monitoring.Domain.Models.Enums;
 
+/// <summary>
+/// Перечисление - Типы операционных систем.
+/// </summary>
 public enum DeviceOSType
 {
     Windows = 1,
