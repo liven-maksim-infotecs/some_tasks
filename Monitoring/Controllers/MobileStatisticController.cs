@@ -2,12 +2,12 @@
 
 [ApiController]
 [Route("api/[controller]")]
-public class StatisticController : ControllerBase
+public class MobileStatisticController : ControllerBase
 {
-    private readonly ILogger<StatisticController> _logger;
+    private readonly ILogger<MobileStatisticController> _logger;
     private readonly SimpleDatabase _database;
 
-    public StatisticController(ILogger<StatisticController> logger, SimpleDatabase database)
+    public MobileStatisticController(ILogger<MobileStatisticController> logger, SimpleDatabase database)
     {
         _logger = logger;
         _database = database;

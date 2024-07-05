@@ -10,7 +10,7 @@ export class MonitoringComponent {
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.statistics = [];
-    http.get<DeviceStatistic[]>(baseUrl + 'api/Statistic').subscribe((result) => {
+    http.get<DeviceStatistic[]>(baseUrl + 'api/MobileStatistic').subscribe((result) => {
       this.statistics = result;
     });
   }
