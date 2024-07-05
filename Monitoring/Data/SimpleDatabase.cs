@@ -1,5 +1,8 @@
 ﻿namespace Monitoring.Data;
 
+/// <summary>
+/// Простая реализация базы.
+/// </summary>
 public class SimpleDatabase
 {
     private readonly ConcurrentBag<DeviceStatistic> _dataBase = new()
@@ -10,9 +13,17 @@ public class SimpleDatabase
         new(Guid.NewGuid(), "Anonymous", DeviceOSType.MacOs, "8.800.33.8"),
     };
 
+    /// <summary>
+    /// Получить данные о статистике.
+    /// </summary>
+    /// <returns>Коллекция элементов <see cref="DeviceStatistic"/>.</returns>
     public IEnumerable<DeviceStatistic> Get() =>
         _dataBase.ToArray();
 
+    /// <summary>
+    /// Записать статистику в базу.
+    /// </summary>
+    /// <param name="statistic"><see cref="DeviceStatistic"/>.</param>
     public void Add(DeviceStatistic statistic) =>
         _dataBase.Add(statistic);
 }
