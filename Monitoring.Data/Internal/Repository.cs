@@ -20,6 +20,6 @@ internal class Repository<T> : IRepository<T>
         await _collection.AsQueryable().ToListAsync(cancellationToken);
 
     /// <inheritdoc />
-    public async Task AddAsync(T statistic, CancellationToken cancellationToken = default) =>
-        await _collection.InsertOneAsync(statistic, default, cancellationToken);
+    public async Task AddAsync(T entity, CancellationToken cancellationToken = default) =>
+        await _collection.InsertOneAsync(entity, default, cancellationToken);
 }

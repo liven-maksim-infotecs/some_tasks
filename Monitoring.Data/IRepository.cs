@@ -16,8 +16,8 @@ public interface IRepository<T>
     /// <summary>
     /// Добавить сущность в базу.
     /// </summary>
-    /// <param name="statistic">Сущность на сохранение.</param>
+    /// <param name="entity">Сущность на сохранение.</param>
     /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
     /// <returns><see cref="Task"/>.</returns>
-    public Task AddAsync(T statistic, CancellationToken cancellationToken = default);
+    public Task AddAsync(T entity, CancellationToken cancellationToken = default);
 }
