@@ -1,0 +1,10 @@
+﻿name: onboarding_liven
+
+services:
+  metrics:
+    image: metrics
+    build:
+      context: .
+      dockerfile: Monitoring/Dockerfile
+    ports:
+      - 8800:80

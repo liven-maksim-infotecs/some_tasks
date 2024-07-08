@@ -1,0 +1,24 @@
+<h1 id="tableLabel">Monitoring</h1>
+
+<p>App monitoring statistic</p>
+
+<p *ngIf="!statistics"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="statistics">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>AppVersion</th>
+      <th>UserName</th>
+      <th>OS Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let statistic of statistics">
+      <td>{{ statistic.id }}</td>
+      <td>{{ statistic.appVersion }}</td>
+      <td>{{ statistic.username }}</td>
+      <td>{{ statistic.osType }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,12 @@
+﻿global using System.Collections.Concurrent;
+global using System.Collections.Generic;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Logging;
+global using Monitoring.Data;
+global using Monitoring.Data.Extensions;
+global using Monitoring.Domain.Models;
+global using Monitoring.Domain.Models.Enums;
+global using Swashbuckle.AspNetCore.Annotations;
