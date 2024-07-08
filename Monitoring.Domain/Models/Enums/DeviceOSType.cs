@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Web.Domain.Models.Enums;
+﻿namespace Monitoring.Domain.Models.Enums;
 
 /// <summary>
 /// Перечисление - Типы операционных систем.

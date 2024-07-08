@@ -1,4 +1,4 @@
-namespace Monitoring.Web.Data;
+namespace Monitoring.Data;
 
 /// <summary>
 /// Обобщённый репозиторий.
@@ -17,7 +17,7 @@ public interface IRepository<T>
     /// Добавить сущность в базу.
     /// </summary>
     /// <param name="statistic">Сущность на сохранение.</param>
-    /// <param name="cancellationToken"><see cref=""/>.</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/>.</param>
     /// <returns><see cref="Task"/>.</returns>
     public Task AddAsync(T statistic, CancellationToken cancellationToken = default);
 }

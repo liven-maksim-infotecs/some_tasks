@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Web.Domain.Models;
+﻿namespace Monitoring.Domain.Models;
 
 /// <summary>
 /// Модель данных о статистике мобильных приложений.

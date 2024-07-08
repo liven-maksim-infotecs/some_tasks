@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Web.Data.Internal;
+﻿namespace Monitoring.Data.Internal;
 
 /// <summary>
 /// Реализация репозитория <see cref="IRepository{T}"/>.
