@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Data.Constants;
+﻿namespace Monitoring.Web.Data.Constants;
 
 /// <summary>
 /// Набор констант - имён строк подключения.

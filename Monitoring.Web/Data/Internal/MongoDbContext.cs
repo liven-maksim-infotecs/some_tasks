@@ -1,4 +1,4 @@
-namespace Monitoring.Data.Internal;
+namespace Monitoring.Web.Data.Internal;
 
 /// <summary>
 /// Наивная реализация контекста для MongoDB.

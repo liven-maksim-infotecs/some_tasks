@@ -1,4 +1,4 @@
-namespace Monitoring.Data;
+namespace Monitoring.Web.Data;
 
 /// <summary>
 /// Обобщённый репозиторий.

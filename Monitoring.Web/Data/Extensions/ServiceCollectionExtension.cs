@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Data.Extensions;
+﻿namespace Monitoring.Web.Data.Extensions;
 
 /// <summary>
 /// Класс с методами-расширения <see cref="IServiceCollection"/>.

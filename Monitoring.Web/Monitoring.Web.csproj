@@ -9,7 +9,6 @@
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <RootNamespace>Monitoring</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

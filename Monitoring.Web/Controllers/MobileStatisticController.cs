@@ -1,4 +1,4 @@
-﻿namespace Monitoring.Controllers;
+﻿namespace Monitoring.Web.Controllers;
 
 /// <summary>
 /// Контроллер статистики по мобильным приложениям.
