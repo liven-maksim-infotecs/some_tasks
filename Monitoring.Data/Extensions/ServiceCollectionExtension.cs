@@ -1,4 +1,6 @@
-﻿namespace Monitoring.Data.Extensions;
+﻿using Monitoring.Data.Exceptions;
+
+namespace Monitoring.Data.Extensions;
 
 /// <summary>
 /// Класс с методами-расширения <see cref="IServiceCollection"/>.
@@ -23,7 +25,7 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddMongoDbClient(this IServiceCollection collection, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(ConnectionStringNames.Mongo)!;
+        var connectionString = configuration.GetConnectionString(ConnectionStringNames.Mongo) ?? throw new ConnectionStringCannotBeFoundByName();
 
         MongoUrl url = MongoUrl.Create(connectionString);
         MongoClient mongoClient = new(url);
