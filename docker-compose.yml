@@ -6,5 +6,11 @@ services:
     build:
       context: .
       dockerfile: Monitoring/Dockerfile
+    environment:
+      - Mobile_ConnectionStrings_MongoConnection="mongodb://mongodb:27017/MobileStatistic?connectTimeoutMS=30000"
     ports:
       - 8800:80
+  mongodb:
+    image: mongo:8.0.0-rc9-jammy
+    ports:
+      - 27018:27017
